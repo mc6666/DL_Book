@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Canvas interface for MNIST-trained digit recognition neural network</title>
+    </head>
+    <body>
+        
+        
+        <center><h1>在左邊的框書寫0~9</h1></center>
+        <div style="width: 800px; margin: 0 auto; justify-content: center; align-items: center">
+            <canvas width="280" height="280" id="canvas" style="border:1px solid black; float: left">canvas</canvas>
+            
+            <div style="width: 230px; height: 280px; float: left; position:relative">
+                <input type="button" onclick="uploadEx()" value="辨識" style="width: 50%; position:absolute; top: 30%; left: 25%"/> 
+                <input type="button" onclick="clearCanvas()" value="清畫面" style="width: 50%; position:absolute; top: 50%; left: 25%"/>
+            </div>
+            
+            <div style="width: 280px; height: 280px; float:left; border:1px solid black; font-size: 280px; line-height: 280px; text-align: center">
+                <span id="num" style=""></span>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            /* Canvas drawing code adapted from https://jsfiddle.net/j3xDg/
+               Communication with server adapted from 
+               http://www.codepool.biz/upload-html-canvas-data-to-php-server.html */
+        
+            var canvas = document.querySelector('#canvas');
+            var ctx = canvas.getContext('2d');
+            var mouse = {x: 0, y: 0};
+            var last_mouse = {x: 0, y: 0};
+            
+            /* Mouse Capturing Work */
+            canvas.addEventListener('mousemove', function(e) {
+                last_mouse.x = mouse.x;
+                last_mouse.y = mouse.y;
+                
+                /* Modified this to avoid problems with
+                   scrolling the page */
+                if (e.offsetX) {
+                    mouse.x = e.offsetX;
+                    mouse.y = e.offsetY;
+                }
+                else if (e.layerX) {
+                    mouse.x = e.layerX;
+                    mouse.y = e.layerY;
+                }
+            }, false);
+            
+            window.onload = function() {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                context.rect(0, 0, 280, 280);
+                context.fillStyle = 'white';
+                context.fill();
+            }
+            
+            /* Drawing on Paint App */
+            ctx.lineWidth = 30;
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = 'black';
+            
+            canvas.addEventListener('mousedown', function(e) {
+                canvas.addEventListener('mousemove', onPaint, false);
+            }, false);
+            
+            canvas.addEventListener('mouseup', function() {
+                canvas.removeEventListener('mousemove', onPaint, false);
+            }, false);
+            
+            var onPaint = function() {
+                ctx.beginPath();
+                ctx.moveTo(last_mouse.x, last_mouse.y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.closePath();
+                ctx.stroke();
+            };
+            
+            function clearCanvas() {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.rect(0, 0, 280, 280);
+                context.fillStyle = 'white';
+                context.fill();
+            }
+        </script>
+ 
+        <div>
+            
+        </div>
+ 
+        <form method="post" accept-charset="utf-8" name="form1">
+            <input name="data" id='data' type="hidden"/>
+        </form>
+ 
+        <script>
+            function uploadEx() {
+                var canvas = document.getElementById("canvas");
+                var dataURL = canvas.toDataURL("image/png");
+                document.getElementById('data').value = dataURL;
+                var fd = new FormData(document.forms["form1"]);
+ 
+                var xhr = new XMLHttpRequest({mozSystem: true});
+                xhr.open('POST', 'http://127.0.0.1:5000/post-data-url', true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        document.getElementById('num').innerHTML = xhr.responseText;
+                        
+                    }
+                }
+    
+                xhr.onload = function() {
+ 
+                };
+                xhr.send(fd);
+            };
+        </script>
+    </body>
+</html>
