@@ -1,6 +1,6 @@
 # 深度學習 最佳入門邁向AI專題實戰
 
-![封面](封面1.jpeg)
+<img src="封面1.jpeg" alt="drawing" width="200"/>
 
 ## 第一篇 深度學習導論
 ### 1	深度學習(Deep Learning)導論
