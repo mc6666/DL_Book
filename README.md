@@ -69,7 +69,7 @@
 ##### 8.10	TensorFlow Object Detection API
 ##### 8.11	總結
 ### 9	進階的影像應用
-##### 9.1	語意分割(Semantic Segmentation)介紹
+##### 9.1	語義分割(Semantic Segmentation)介紹
 ##### 9.2	自動編碼器(AutoEncoder)
 ##### 9.3	語義分割(Semantic segmentation)實作
 ##### 9.4	實例分割(Instance Segmentation)
