@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 修改自 https://medium.com/quick-code/python-audio-spectrum-analyser-6a3c54ad950
 import pyaudio
 import struct
@@ -19,6 +20,7 @@ CHUNK = int(RATE/20) # 接收區塊大小
 stream = mic.open(format=FORMAT, channels=CHANNELS, rate=RATE, 
             input=True, output=True, frames_per_buffer=CHUNK)
 
+# +
 fig, ax = plt.subplots(figsize=(14,6))
 
 # 設定X/Y軸範圍
@@ -38,9 +40,12 @@ while i < 100:
     fig.canvas.flush_events()
     plt.pause(0.005)
     i+=1
+# -
 
 # 關閉所有裝置    
 stream.stop_stream()
 stream.close()
 mic.terminate()
+
+
 
