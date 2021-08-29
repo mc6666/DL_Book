@@ -10,7 +10,6 @@ from scipy import signal
 mic = pyaudio.PyAudio()
 
 # 參數設定
-FORMAT = pyaudio.paInt16
 FORMAT = pyaudio.paInt16 # 精度
 CHANNELS = 1 # 單聲道
 RATE = 20000 # 取樣頻率

@@ -41,3 +41,5 @@ while i < 100: # 顯示100次即停止
 stream.stop_stream()
 stream.close()
 mic.terminate()
+
+
