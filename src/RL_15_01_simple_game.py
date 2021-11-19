@@ -31,7 +31,7 @@ class Environment:
         else:    
             reward = -0.2
 
-        return action, reward
+        return self.poistion, reward
 
 
 # 代理人類別
@@ -57,6 +57,7 @@ if __name__ == "__main__":
     while not env.is_done():
         # 採取行動
         action = agent.action(env)
+        print('左' if action == -1 else '右', end=' ')
         
         # 更新下一步
         state, reward = env.step(action)
@@ -65,5 +66,5 @@ if __name__ == "__main__":
         total_reward += reward
     
     # 顯示累計報酬
-    print(f"累計報酬: {total_reward:.4f}")
+    print(f"\n累計報酬: {total_reward:.4f}")
 

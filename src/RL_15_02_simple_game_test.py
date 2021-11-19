@@ -12,6 +12,7 @@ for _ in range(10):
     while not env.is_done():
         # 採取行動
         action = agent.action(env)
+        print('左' if action == -1 else '右', end=' ')
         
         # 更新下一步
         state, reward = env.step(action)
@@ -20,4 +21,5 @@ for _ in range(10):
         total_reward += reward
 
     # 顯示累計報酬
-    print(f"累計報酬: {total_reward:.4f}")
+    print(f"\n累計報酬: {total_reward:.4f}\n")
+
