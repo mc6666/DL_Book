@@ -1,3 +1,4 @@
+# pip install flask_cors
 # Modification from https://github.com/marcotompitak/mnist-canvas
 import tensorflow as tf
 from flask import Flask, request
@@ -6,6 +7,7 @@ import tensorflow as tf
 
 from image_processing import preprocess
 from utils import data_uri_to_cv2_img, value_invert
+import numpy as np
 
 # Load in the saved neural network
 model = tf.keras.models.load_model('./mnist_model.h5')
@@ -36,7 +38,7 @@ def api_predict_from_dataurl():
     # reshape for input layer
     data = value_invert(img/255).reshape((1,28,28,1))
 
-    predictions = model.predict_classes(data)[0]
+    predictions = np.argmax(model.predict(data), axis=-1)[0]
 
     print("Prediction requested! Returned " + str(predictions))
 
