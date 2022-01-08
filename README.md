@@ -1,3 +1,9 @@
+# TensorFlow 變更
+#### model.predict_classes 在 TensorFlow v2.5 已被淘汰, 應改為
+```
+np.argmax(model.predict(x_test_norm), axis=-1)
+```
+
 # 深度學習 最佳入門邁向AI專題實戰
 
 <img src="封面1.jpeg" alt="drawing" width="400"/>
