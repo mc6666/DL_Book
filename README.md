@@ -4,6 +4,23 @@
 np.argmax(model.predict(x_test_norm), axis=-1)
 ```
 
+# 13_02_ChatterBot_test.ipynb 中的 ChatterBot 套件安裝在Windows作業系統安裝必須逐一套件安裝，例如：
+```
+pip install chatterbot --no-dependencies -U
+pip install chatterbot_corpus
+pip install pint
+pip install mathparse
+pip install pymongo -U
+```
+若出現 sqlalchemy 錯誤，dialect.has_table error, 請修改 anaconda3\Lib\site-packages\chatterbot\storage\sql_storage.py, 約在第46行。
+```
+        # Michael changed
+        # if not self.engine.dialect.has_table(self.engine, 'Statement'):
+        import sqlalchemy
+        insp = sqlalchemy.inspect(self.engine)
+        if not insp.has_table('Statement'):
+```
+
 # 深度學習 最佳入門邁向AI專題實戰
 
 <img src="封面1.jpeg" alt="drawing" width="400"/>
