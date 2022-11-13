@@ -1,7 +1,7 @@
 # 第15章	強化學習 Gym 套件v.2.6 大改版，現有程式會出現錯誤，請安裝 v2.4.1版
 #### 請參閱 [v21 to v26 Migration Guide](https://gymnasium.farama.org/content/migration-guide/)
 #### gym 不再更新，未來由 gymnasium 套件取代，請參閱 [Gymnasium GitHub](https://github.com/Farama-Foundation/Gymnasium)
-```
+
 # TensorFlow 變更
 #### model.predict_classes 在 TensorFlow v2.5 已被淘汰, 應改為
 ```
