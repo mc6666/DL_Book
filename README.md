@@ -1,3 +1,9 @@
+# 範例程式安裝說明
+### 程式相關的測試資料過大，請至[這裡](https://drive.google.com/file/d/1ysZGVFZT2v21lazVo5exxs1aHG89LQRq/view?usp=sharing)下載
+### 請解壓至 src 目錄下
+
+# 各章參考資料：參考資料.pdf
+
 # 第15章	強化學習 Gym 套件v.2.6 大改版，現有程式會出現錯誤，請安裝 v2.4.1版
 #### 請參閱 [v21 to v26 Migration Guide](https://gymnasium.farama.org/content/migration-guide/)
 #### gym 不再更新，未來由 gymnasium 套件取代，請參閱 [Gymnasium GitHub](https://github.com/Farama-Foundation/Gymnasium)
@@ -164,8 +170,3 @@ pip install pymongo -U
 ##### 15.12	木棒台車(CartPole)
 ##### 15.13	結論
 
-# 範例程式安裝說明
-### 程式相關的測試資料過大，請至[這裡](https://drive.google.com/file/d/1ysZGVFZT2v21lazVo5exxs1aHG89LQRq/view?usp=sharing)下載
-### 請解壓至 src 目錄下
-
-# 各章參考資料：參考資料.pdf
